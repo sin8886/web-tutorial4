@@ -1,17 +1,17 @@
-// 使用fetch API读取JSON数据
+
 fetch("userProfiles.json")
   .then((response) => {
     if (!response.ok) {
       throw new Error("网络响应有误");
     }
-    return response.json(); // 解析为JSON对象
+    return response.json();
   })
   .then((data) => {
-    // 获取用户数组
+   
     const users = data.users;
     let output = "";
 
-    // 遍历用户并构建HTML
+    
     users.forEach((user) => {
       output += `
                 <div>
@@ -34,7 +34,7 @@ fetch("userProfiles.json")
             `;
     });
 
-    // 将内容添加到HTML中
+   
     document.getElementById("user-list").innerHTML = output;
   })
   .catch((error) => {
