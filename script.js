@@ -1,4 +1,3 @@
-// 使用fetch API读取XML数据
 fetch("book.xml")
   .then((response) => {
     if (!response.ok) {
@@ -10,11 +9,9 @@ fetch("book.xml")
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(data, "application/xml");
 
-    // 获取所有书籍
     const books = xmlDoc.getElementsByTagName("book");
     let output = "";
 
-    // 遍历书籍并构建HTML
     for (let i = 0; i < books.length; i++) {
       const title = books[i].getElementsByTagName("title")[0].textContent;
       const author = books[i].getElementsByTagName("author")[0].textContent;
@@ -27,7 +24,6 @@ fetch("book.xml")
             </div>`;
     }
 
-    // 将内容添加到HTML中
     document.getElementById("book-list").innerHTML = output;
   })
   .catch((error) => {
