@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Enter a task" />
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", loadTasks);
+
+      function loadTasks() {
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        const taskList = document.getElementById("taskList");
+        taskList.innerHTML = "";
+        tasks.forEach((task, index) => {
+          const li = document.createElement("li");
+          li.textContent = task;
+          const removeButton = document.createElement("button");
+          removeButton.textContent = "Remove";
+          removeButton.onclick = () => removeTask(index);
+          li.appendChild(removeButton);
+          taskList.appendChild(li);
+        });
+      }
+
+      function addTask() {
+        const taskInput = document.getElementById("taskInput");
+        const task = taskInput.value;
+        if (task) {
+          const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+          tasks.push(task);
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+          taskInput.value = "";
+          loadTasks();
+        }
+      }
+
+      function removeTask(index) {
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        tasks.splice(index, 1);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        loadTasks();
+      }
+    </script>
+  </body>
+</html>

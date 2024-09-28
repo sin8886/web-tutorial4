@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Catalog</title>
+  </head>
+  <body>
+    <h1>Book Catalog</h1>
+    <div id="book-list"></div>
+
+    <script>
+      fetch("book.xml")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(data, "application/xml");
+          const books = xml.getElementsByTagName("book");
+          let output = "";
+
+          for (let i = 0; i < books.length; i++) {
+            const title = books[i].getElementsByTagName("title")[0].textContent;
+            const author =
+              books[i].getElementsByTagName("author")[0].textContent;
+            const price = books[i].getElementsByTagName("price")[0].textContent;
+            output += `<p><strong>Title:</strong> ${title}<br>`;
+            output += `<strong>Author:</strong> ${author}<br>`;
+            output += `<strong>Price:</strong> $${price}</p>`;
+          }
+          document.getElementById("book-list").innerHTML = output;
+        });
+    </script>
+  </body>
+</html>

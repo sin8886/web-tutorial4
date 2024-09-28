@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="book.xsd">
-    <book id="1">
-        <title>Book Title 1</title>
-        <author>Author Name 1</author>
-        <price>28.88</price>
-    </book>
-    <book id="2">
-        <title>Book Title 2</title>
-        <author>Author Name 2</author>
-        <price>19.99</price>
-    </book>
-    <book id="3">
-        <title>Book Title 3</title>
-        <author>Author Name 3</author>
-        <price>39.99</price>
-    </book>
+<catalog>
+  <book id="1">
+    <title>Book Title 1</title>
+    <author>Author 1</author>
+    <price>29.99</price>
+  </book>
+  <book id="2">
+    <title>Book Title 2</title>
+    <author>Author 2</author>
+    <price>39.99</price>
+  </book>
+  <book id="3">
+    <title>Book Title 3</title>
+    <author>Author 3</author>
+    <price>49.99</price>
+  </book>
 </catalog>
